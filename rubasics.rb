@@ -164,7 +164,7 @@ end
 leap_year_identify
 =end
 
-
+=begin
 
 # 7. Arrays, while-loop, if conditional flow
 
@@ -191,5 +191,36 @@ def many_words
 end
 
 many_words
+=end
 
 
+
+# 8. Arrays iterate, no sort method [- each_index method -]
+
+def many_words
+    words = []
+
+    puts "Enter a word : "
+    word = gets.chomp
+    words << word
+
+    while word != ""
+        puts "And another : "
+        word = gets.chomp
+        if word == ""
+            word.delete
+        else
+            words.push word
+        end
+    end
+    words.each_index do |word_1|
+        words.each_index do |word_2|
+            if words[word_1] < words[word_2]
+                words[word_1], words[word_2] = words[word_2], words[word_1]
+            end
+        end
+    end
+    puts "Here are the words you entered, sorted alphabetically\n#{words}\n"
+end
+
+many_words
