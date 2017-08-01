@@ -164,6 +164,10 @@ end
 leap_year_identify
 =end
 
+
+
+# 7. Arrays, while-loop, if conditional flow
+
 def many_words
     words = []
 
@@ -183,16 +187,9 @@ def many_words
     words = words.sort
 
     puts "Here are the words you entered, sorted alphabetically\n#{words}\n"
+    # note : puts words would iterate thro the array and print each word in a new line
 end
 
 many_words
-
-
-
-
-
-
-
-
 
 
