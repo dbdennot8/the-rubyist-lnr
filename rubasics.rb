@@ -34,7 +34,7 @@ fav_no
 
 =begin
 
-# 3. allign puts value as desired
+# 3. align puts value as desired
 
 def table_of_contents
     linewidth = 60
@@ -226,7 +226,7 @@ end
 many_words
 =end
 
-=begin
+
 
 # 9. Using a hash, array, for-loop
 
@@ -248,4 +248,3 @@ marks = {"Ramesh":23, "Vivek":40, "Harsh":88, "Mohammad":60}
 puts
 puts group_by_marks(marks, 30)
 puts
-=end
