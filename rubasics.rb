@@ -194,7 +194,7 @@ many_words
 =end
 
 
-
+=begin
 # 8. Arrays iterate, no sort method [- each_index method -]
 
 def many_words
@@ -224,3 +224,28 @@ def many_words
 end
 
 many_words
+=end
+
+=begin
+
+# 9. Using a hash, array, for-loop
+
+def group_by_marks(marks, pass_marks)
+    assess = {:Failed => [], :Passed => []}
+
+    for key in marks.keys
+        if marks[key] < pass_marks
+            assess[:Failed].push [key.to_s, marks[key]]
+
+        else
+            assess[:Passed].push [key.to_s, marks[key]]
+        end
+    end
+    return assess
+end
+
+marks = {"Ramesh":23, "Vivek":40, "Harsh":88, "Mohammad":60}
+puts
+puts group_by_marks(marks, 30)
+puts
+=end
