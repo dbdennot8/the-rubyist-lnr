@@ -1,3 +1,5 @@
+require 'colorize'
+
 =begin
 
 # 1. puts, gets, chomps, interpolation
@@ -227,7 +229,7 @@ many_words
 =end
 
 
-
+=begin
 # 9. Using a hash, array, for-loop
 
 def group_by_marks(marks, pass_marks)
@@ -248,3 +250,46 @@ marks = {"Ramesh":23, "Vivek":40, "Harsh":88, "Mohammad":60}
 puts
 puts group_by_marks(marks, 30)
 puts
+=end
+
+# 10. Working with the time class
+
+def make_time
+    puts "Oy, what year were you born?\n[enter whole year..like,, '1876' or something]".white
+    year = gets.to_i
+    puts "And the month?\n[Single digit...ok, two if you were born after September.]".white
+    month = gets.to_i
+    puts "Remember the exact day? No? Think harder..Enter the day!".white
+    day = gets.to_i
+
+    born = Time.mktime(year, month, day)
+    billion = 1000000000
+    turn_billion = born + billion 
+
+    puts
+    puts "You were born on ".white + "#{born}.".blue
+    if turn_billion > Time.now
+        puts "You will turn a billion on ".white + "#{turn_billion}.".blue + " A billion seconds, that is.".white
+    else
+        puts "You turned a billion on ".white + "#{turn_billion}.".blue + " A billion seconds, that is.".white
+    end
+
+    puts
+    puts "Enter an age, in years, to find out when you will turn it, or when you turned it.".white
+
+    age = gets.to_f
+    age_secs = (age * (366 * 24 * 60 * 60)) # .round(-8) would round to the nearest hundred million secs
+
+    year_turn = born + age_secs
+
+    puts
+    if year_turn > Time.now
+        puts "You will turn ".white + "#{age}".blue + " on ".white + "#{year_turn}.".blue + "That's ".white + "#{age_secs}".blue + " seconds old.".white
+    else
+        puts "You turned ".white + "#{age}".blue + " on ".white + "#{year_turn}. ".blue + "That's ".white + "#{age_secs}".blue + " seconds old.".white
+    end
+    puts
+end
+
+make_time
+
