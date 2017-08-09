@@ -15,10 +15,13 @@ class Cipher
         message = gets.chomp.downcase.split('')
 
         encrypted = [] 
-        message.collect do |letter|
-            encrypted.push(cipher_look_up[letter], rand(0..10.9))
+        # message.collect do |letter|
+        #     encrypted.push(cipher_look_up[letter], rand(0..999))
+        message.each do |letter|
+            encrypted.push(cipher_look_up[letter], rand(0..999))
         end
         puts "\n#{encrypted.join}\n" 
+        puts
     end
 
     def decrypt_message
@@ -27,13 +30,11 @@ class Cipher
         ciphered = gets.chomp.downcase.split(/\d+/)
 
         decrypted = []
-        ciphered.collect do |letter|
-            if cipher_look_up.has_key? letter
-                decrypted.push(cipher_look_up[letter])
-            end
+        ciphered.each do |letter|
+            decrypted.push(cipher_look_up[letter])
         end
 
-        puts "\n#{decrypted.join(" ")}\n"
+        puts "\n#{decrypted.join}\n"
     end
 
 
