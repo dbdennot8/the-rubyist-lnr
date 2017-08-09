@@ -1,5 +1,4 @@
 class Cipher
-    $cipher = {}
     # def cipher_look_up 
     #     {'a' => 'n', 'b' => 'o', 'c' => 'p', 'd' => 'q',
     #      'e' => 'r', 'f' => 's', 'g' => 't', 'h' => 'u',
@@ -38,37 +37,39 @@ class Cipher
     #     puts "\n#{decrypted.join}\n"
     # end
 
-    def cipher_look_up
-        unciphered = ("a".."z").to_a
-        ciphered = ("a".."z").to_a.rotate(13)
-        unciphered.each_with_index do |letter, index|
-            $cipher[letter] = ciphered[index]
-        end
+    def cipher_look_up(rotation)
+        unciphered = (" ".."z").to_a
+        ciphered = (" ".."z").to_a.rotate(rotation)
+        # unciphered.each_with_index do |letter, index|
+        #     $cipher[letter] = ciphered[index]
+        pairing = unciphered.zip(ciphered)
+        $cipher = Hash[pairing]
     end
 
     def encrypt_message
+        puts "To encrypt your message, please enter an ROT-value: \n"
+
+        cipher_look_up(gets.chomp.to_i)
+
         puts "\nEnter a message : \n"
         message = gets.chomp.downcase.split('')
 
         encrypted = []
-        cipher_look_up
         message.collect do |letter|
-            encrypted.push($cipher[letter], rand(0..999))
+            encrypted.push($cipher[letter])
         end       
         puts "\n#{encrypted.join}\n"
     end
 
     def decrypt_message
         puts "\nEnter a message to decrypt : \n"
-        decrypt_this = gets.chomp.downcase.split(/\d+/)
+        decrypt_this = gets.chomp.downcase.split('')
 
         decrypted = []
-        cipher_look_up
-
         decrypt_this.collect do |letter|
-            decrypted.push($cipher[letter])
+            decrypted.push($cipher.key(letter))
         end
-        puts "\n#{decrypted.join}\n"
+        puts "\n#{decrypted.join}\n\n"
     end
 end
 
