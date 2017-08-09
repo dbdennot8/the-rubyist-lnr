@@ -252,6 +252,7 @@ puts group_by_marks(marks, 30)
 puts
 =end
 
+=begin
 # 10. Working with the time class
 
 def make_time
@@ -292,4 +293,4 @@ def make_time
 end
 
 make_time
-
+=end
