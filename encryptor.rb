@@ -36,6 +36,9 @@ class Cipher
 
     #     puts "\n#{decrypted.join}\n"
     # end
+    
+
+    # Smarter way of making the cipher hash
 
     def cipher_look_up(rotation)
         unciphered = (" ".."z").to_a
@@ -61,19 +64,78 @@ class Cipher
         puts "\n#{encrypted.join}\n"
     end
 
-    def decrypt_message
+    def decrypt_message(message)
         puts "\nEnter a message to decrypt : \n"
-        decrypt_this = gets.chomp.downcase.split('')
+        message = gets.chomp.downcase.split('')
 
         decrypted = []
-        decrypt_this.collect do |letter|
+        message.collect do |letter|
             decrypted.push($cipher.key(letter))
         end
         puts "\n#{decrypted.join}\n\n"
     end
+
+    # Using file IO
+
+    def encrypt_file
+
+        puts "\nEnter an ROT-value of your choice: \n"
+
+        cipher_look_up(gets.chomp.to_i)
+
+        puts "What's the name of the file?\n"
+        filename = gets.chomp
+
+        reading_file = File.open(filename, "r")
+        raw_message = reading_file.read.split('')
+        reading_file.close
+
+        encrypted = []
+
+        raw_message.collect do |letter|
+            encrypted.push($cipher[letter])
+        end
+
+        
+
+        write_encrypted = File.open("secret.txt.encrypted", "w")
+
+        write_encrypted.write(encrypted.join)
+        write_encrypted.close
+
+        puts "\n#{filename} has been encrypted and saved.\nPlease see '.encrypted' file in directory\n\n"
+
+    end
+
+    def decrypt_file
+        puts "\nWhat is the name of the encrypted file?\n"
+
+        filename = gets.chomp
+        reading_file = File.open(filename, "r")
+        encrypted_message = reading_file.read.split('')
+        reading_file.close
+
+        decrypted = []
+        
+        encrypted_message.collect do |letter|
+            decrypted.push($cipher.key(letter))
+        end
+
+        write_decrypted = File.open("secret.txt.decrypted", "w")
+
+        write_decrypted.write(decrypted.join)
+        write_decrypted.close
+
+        puts "\n#{filename} has been decrypted and saved.\nPlease see '.decrypted' file in directory\n\n"
+
+    end
+
 end
 
 test = Cipher.new
 
-test.encrypt_message
-test.decrypt_message
+# test.encrypt_message
+# test.decrypt_message
+
+test.encrypt_file
+test.decrypt_file
