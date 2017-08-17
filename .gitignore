@@ -1,1 +1,4 @@
 .vscode/
+secret.txt
+secret.txt.decrypted
+secret.txt.encrypted
