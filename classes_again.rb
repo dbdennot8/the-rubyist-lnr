@@ -20,7 +20,8 @@ class Point
     def self.sum(*points) # Enumerating the points so created
         x = y = 0
         points.each {|point| x += point.x; y += point.y}
-        Point.new(x, y)    
+        self
+        self.new(x, y)    
     end
 end
 
