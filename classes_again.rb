@@ -31,6 +31,12 @@ class PointTu < Point
     end
 end
 
+module Roomable
+    def assign_room(name, hall)
+        puts "#{name} assigned to #{hall}"
+    
+end
+
 PointTu.new(1,1).vector_add
 
 # here = Point.new(0, 0)
