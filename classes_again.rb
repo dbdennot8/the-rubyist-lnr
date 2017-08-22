@@ -25,14 +25,22 @@ class Point
     end
 end
 
-here = Point.new(0, 0)
-puts here.is_a? Point
-puts here 
-puts
-b = Point.new(11, 12)
-c = Point.new(b.x*2, b.y+15)
-d = c.vector_add(b)
-puts b.to_s, c.to_s, d.to_s
-puts "Kujaribu tu"
-puts Point.sum(here, b, c, d)
-puts
+class PointTu < Point
+    def vector_add
+        puts "Issa wrap"
+    end
+end
+
+PointTu.new(1,1).vector_add
+
+# here = Point.new(0, 0)
+# puts here.is_a? Point
+# puts here 
+# puts
+# b = Point.new(11, 12)
+# c = Point.new(b.x*2, b.y+15)
+# d = c.vector_add(b)
+# puts b.to_s, c.to_s, d.to_s
+# puts "Kujaribu tu"
+# puts Point.sum(here, b, c, d)
+# puts
