@@ -1,4 +1,3 @@
-
 file = File.new('textfile.txt', 'w')
 
 file.puts"I am beginning to think...
