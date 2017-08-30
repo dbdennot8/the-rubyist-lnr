@@ -7,7 +7,7 @@ require 'colorize'
 def greet
     print "Uniatwo? "
     name = gets.chomp
-    print "#{name} nai? "
+    print "#{name} nani? "
     name_2 = gets.chomp
     print "#{name} #{name_2}, unaishi wapi? "
     address = gets.chomp
@@ -294,3 +294,36 @@ end
 
 make_time
 =end
+
+def maxmin_arr
+    arr = []
+    for i in 1..10
+        arr << Random.rand(1000)
+    end
+
+    # using the `each` iterator
+    max = arr[0].to_i
+    arr.each do |i|
+        if i > max
+            max = i
+        end
+    end
+
+    # using a for-loop
+    min = arr[0].to_i
+    for i in arr
+        if i < min
+            min = i
+        end
+    end
+puts
+puts "The array of random numbers is:\n#{arr}"
+puts
+puts "When sorted, the array of random numbers is:\n#{arr.sort.reverse}"
+puts
+puts "The maximum number in the array is: #{max}"
+puts
+puts "The minimum number in the array is: #{min}"
+puts
+
+end
